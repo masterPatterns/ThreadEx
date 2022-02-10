@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.learn.threadex.common.CommonUtil;
+
 public class FileUploadThread extends Thread {
 	
 	private MultipartFile file = null;
@@ -30,6 +32,8 @@ public class FileUploadThread extends Thread {
     
     public void executFunction() 
     {
+    	String dateTime = CommonUtil.getDateString("yyyyMMddHHmmss");
+    	System.out.println("FileUploadThread Start : " + dateTime);
 //    	String path = "C:/Program Files";
     	Path currentPath = Paths.get(""); 
     	String path = currentPath.toAbsolutePath().toString(); 
@@ -46,6 +50,7 @@ public class FileUploadThread extends Thread {
 			e.printStackTrace();
 		}
         
-        
+        dateTime = CommonUtil.getDateString("yyyyMMddHHmmss");
+        System.out.println("FileUploadThread End : " + dateTime);
     }
 }
