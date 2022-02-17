@@ -26,7 +26,10 @@ public class FileUploadController {
 	
 	@PostMapping(value = "/fileUpload")
 	@ResponseBody
-	public Map<String, Object> fileUpload(@RequestParam("itemName") String itemName, @RequestParam(value="file",required=false) List<MultipartFile> files) {
-		return fileUploadService.fileUpload(itemName, files);
+	public ModelAndView fileUpload(@RequestParam("itemName") String itemName, @RequestParam(value="file",required=false) List<MultipartFile> files) {
+		
+		Map<String, Object> returnMap = fileUploadService.fileUpload(itemName, files);
+		
+		return new ModelAndView("index");
 	}
 }
